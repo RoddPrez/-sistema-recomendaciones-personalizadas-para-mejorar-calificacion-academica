@@ -1,10 +1,16 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
+
+# Ruta segura que funciona desde cualquier lugar
+ruta_actual = os.path.dirname(__file__)
+ruta_rf = os.path.join(ruta_actual, 'modelo_random_forest.pkl')
+ruta_gb = os.path.join(ruta_actual, 'modelo_gradient_boosting.pkl')
 
 # Cargar modelos entrenados
-modelo_rf = joblib.load('modelo_random_forest.pkl')
-modelo_gb = joblib.load('modelo_gradient_boosting.pkl')
+modelo_rf = joblib.load(ruta_rf)
+modelo_gb = joblib.load(ruta_gb)
 
 st.title("🎓 Predicción de Nota Semestral Universitaria")
 st.markdown("💡 *Estima tu rendimiento académico y obtén recomendaciones personalizadas para mejorar tus resultados.*")
